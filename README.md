@@ -2,8 +2,6 @@
 
 A simple frontend for our EDS 6343 final project. It connects to our MySQL database (`oilfield_maintenance`) so we can show the data and add new records during the presentation.
 
-The frontend is extra credit. Only two things are graded: **it works** and **it is connected to the database**. How it looks does not matter.
-
 **Who is Person A and who is Person B is not picked yet.** Rodney chooses, then write the names here:
 
 - Person A (screens that read data): _______________
