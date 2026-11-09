@@ -1,0 +1,21 @@
+# Shared tasks (both of us)
+
+- [ ] **Set up the repo** (by Nov 11)
+  - [ ] Create the GitHub repo and add both of us.
+  - [ ] Push this folder as the first commit.
+  - [ ] Rodney picks Person A or B. Write the names in the README and in each task file.
+- [ ] **Wire it together** (as screens get done)
+  - [ ] `app.py` already lists every screen, so finished screens show up by themselves. Only edit `app.py` together, if we add a new screen.
+  - [ ] Pull often and push small changes. Each of us only edits our own files, so there should be no merge conflicts.
+- [ ] **Test together** (Nov 16-17)
+  - [ ] Run `sql/Team4_SQL_Build.sql` again to reset the data.
+  - [ ] Go through every Must screen in [SCOPE.md](../SCOPE.md).
+  - [ ] Take a screenshot of every screen and save them in a `screenshots/` folder. They go in the slides and the final report.
+- [ ] **Demo check** (Nov 18)
+  - [ ] Run the UI on Rodney's laptop (the one used in class).
+  - [ ] Practice the demo steps from SCOPE.md in about 1.5 minutes.
+  - [ ] Test Teams screen sharing (Alex presents online).
+  - [ ] Keep the screenshots as a backup in case the live demo fails.
+- [ ] **After the presentation**
+  - [ ] Add any UI feedback to the plan's Feedback sheet.
+  - [ ] Copy the source code, README, and screenshots into the `UI` folder of `Team4_FinalProject.zip`.

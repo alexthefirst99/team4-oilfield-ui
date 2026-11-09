@@ -1,0 +1,21 @@
+# Local MySQL login: never commit passwords
+.env
+config.local.*
+secrets.*
+.streamlit/secrets.toml
+# ...but the template with no password is shared
+!.streamlit/secrets.example.toml
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
