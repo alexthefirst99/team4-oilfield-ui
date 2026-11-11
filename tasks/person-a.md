@@ -11,7 +11,7 @@ Check each box when it is done. Details for each screen are in [SCOPE.md](../SCO
 - [x] **1. Connection and home page.** Do this first, because every other screen needs it.
   - [x] `db.py`: write `get_connection()`, `fetch_df()`, and `execute()`. Read the login from `.streamlit/secrets.toml`. Keep the function names, because Person B's forms already use them.
   - [x] `views/person_a/home.py`: show how many rows each of the 11 tables has.
-  - [ ] Push it so Person B can build on it.
+  - [x] Push it so Person B can build on it.
   - Done when: the counts match MySQL Workbench.
 - [x] **2. Equipment list** (`views/person_a/equipment.py`)
   - [x] Show each equipment item with its site name and type name.
