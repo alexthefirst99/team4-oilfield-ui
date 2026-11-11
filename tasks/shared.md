@@ -3,7 +3,7 @@
 - [ ] **Set up the repo** (by Nov 11)
   - [ ] Create the GitHub repo and add both of us.
   - [ ] Push this folder as the first commit.
-  - [ ] Rodney picks Person A or B. Write the names in the README and in each task file.
+  - [x] Pick Person A and B (Alex is A, Rodney is B). Names are in the README and task files.
 - [ ] **Wire it together** (as screens get done)
   - [ ] `app.py` already lists every screen, so finished screens show up by themselves. Only edit `app.py` together, if we add a new screen.
   - [ ] Pull often and push small changes. Each of us only edits our own files, so there should be no merge conflicts.

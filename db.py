@@ -1,38 +1,48 @@
 """MySQL connection helpers.
 
-OWNER: Person A (SCOPE.md item 1). Build this first and push it, because every
-screen uses it. Person B can already write forms against these function names.
+OWNER: Person A (SCOPE.md item 1). Every screen gets its data through these
+three functions, so keep their names and inputs the same.
 
 The login comes from .streamlit/secrets.toml (copy secrets.example.toml).
 Never commit secrets.toml.
 """
+import mysql.connector
+import pandas as pd
 import streamlit as st
 
 
 def get_connection():
     """Return an open connection to the oilfield_maintenance database.
 
-    TODO (Person A): connect with mysql.connector using st.secrets["mysql"].
-    Person B can also use this for saves that need several INSERTs together
-    (for example a work order plus its technicians).
+    Use this directly only for saves that need several statements in one
+    transaction (for example a work order plus its technicians). Close it when done.
     """
-    raise NotImplementedError("Person A: write get_connection() in db.py")
+    return mysql.connector.connect(**st.secrets["mysql"])
 
 
 def fetch_df(sql, params=None):
-    """Run a SELECT and return the rows as a pandas DataFrame.
-
-    TODO (Person A)
-    """
-    raise NotImplementedError("Person A: write fetch_df() in db.py")
+    """Run a SELECT and return the rows as a pandas DataFrame."""
+    conn = get_connection()
+    try:
+        cur = conn.cursor()
+        cur.execute(sql, params or ())
+        columns = [col[0] for col in cur.description]
+        return pd.DataFrame(cur.fetchall(), columns=columns)
+    finally:
+        conn.close()
 
 
 def execute(sql, params=None):
     """Run one INSERT or UPDATE, commit it, and return the new row's id (lastrowid).
 
-    Do not catch mysql.connector.Error here. Let it go up so the screen can show
-    it with errors.show_db_error().
-
-    TODO (Person A)
+    mysql.connector.Error is not caught here, so the screen can show it
+    with errors.show_db_error().
     """
-    raise NotImplementedError("Person A: write execute() in db.py")
+    conn = get_connection()
+    try:
+        cur = conn.cursor()
+        cur.execute(sql, params or ())
+        conn.commit()
+        return cur.lastrowid
+    finally:
+        conn.close()

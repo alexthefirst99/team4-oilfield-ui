@@ -1,6 +1,6 @@
 # Person B: forms that save data
 
-Name: _______________ (Rodney picks A or B)
+Name: Rodney Hong
 
 Check each box when it is done. Details for each screen are in [SCOPE.md](../SCOPE.md).
 

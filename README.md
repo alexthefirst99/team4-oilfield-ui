@@ -2,10 +2,8 @@
 
 A simple frontend for our EDS 6343 final project. It connects to our MySQL database (`oilfield_maintenance`) so we can show the data and add new records during the presentation.
 
-**Who is Person A and who is Person B is not picked yet.** Rodney chooses, then write the names here:
-
-- Person A (screens that read data): _______________
-- Person B (forms that save data): _______________
+- Person A (screens that read data): Alex Tran
+- Person B (forms that save data): Rodney Hong
 
 ## Important dates
 
@@ -85,14 +83,14 @@ The numbers (1-12) match the items in [SCOPE.md](SCOPE.md).
    conda activate team4-ui
    pip install -r requirements.txt
    ```
-3. Copy `.streamlit/secrets.example.toml` to `.streamlit/secrets.toml` and put in your MySQL password. **Never commit `secrets.toml`** (it is already in `.gitignore`).
+3. Copy `.streamlit/secrets.example.toml` to `.streamlit/secrets.toml` and put in your MySQL password (if your MySQL root user has no password, as with a default Homebrew install, use `password = ""`). **Never commit `secrets.toml`** (it is already in `.gitignore`).
 4. Start the app from the `team4-oilfield-ui` folder:
    ```bash
    streamlit run app.py
    ```
    It opens in the browser. Pick a screen from the sidebar.
 
-Until Person A finishes `db.py`, every screen shows its "Not built yet" message. That is expected.
+The Home screen shows "Connected to the oilfield_maintenance database" and the row count of every table. If it shows "Could not connect to MySQL", check that MySQL is running and that the login in `secrets.toml` is right. Screens that are not built yet show a "Not built yet" message.
 
 _Person A (README task): check these steps on both laptops before Nov 16 and fix anything that is different._
 
