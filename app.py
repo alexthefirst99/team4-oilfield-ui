@@ -11,21 +11,20 @@ import streamlit as st
 from views.person_a import home, equipment, work_orders, query_highlights, equipment_history
 from views.person_b import add_inspection, report_problem, create_work_order, complete_work_order, change_status
 
-# Sidebar label -> screen module. Every module has a render() function.
 SCREENS = {
-    "View data": {
+    "View Data": {
         "Home": home,
         "Equipment": equipment,
-        "Work orders": work_orders,
-        "Query highlights": query_highlights,
-        "Equipment history (nice)": equipment_history,
+        "Work Orders": work_orders,
+        "Query Highlights": query_highlights,
+        "Equipment History": equipment_history,
     },
-    "Add or change data": {
+    "Add or Change Data": {
         "Add an inspection": add_inspection,
-        "Report a problem": report_problem,
-        "Create a work order": create_work_order,
-        "Complete a work order": complete_work_order,
-        "Change work order status (nice)": change_status,
+        "Report a Problem": report_problem,
+        "Create a Work Order": create_work_order,
+        "Complete a Work Order": complete_work_order,
+        "Change Work Order Status": change_status,
     },
 }
 
