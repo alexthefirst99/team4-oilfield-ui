@@ -1,0 +1,7 @@
+# Shared look for the whole app (same colors as our slides).
+[theme]
+base = "light"
+primaryColor = "#C2410C"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#EEF3F4"
+textColor = "#1F2A30"

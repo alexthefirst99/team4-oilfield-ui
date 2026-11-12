@@ -6,21 +6,23 @@ Lists work orders with their equipment and assigned technicians. Filter by statu
 import streamlit as st
 
 import db
+from views.person_a.display import show_table
 
 STATUSES = ["Open", "In Progress", "Completed", "Cancelled"]
 
 
 def render():
-    st.header("Work orders")
+    st.header("Work Orders")
+    st.write("Every job on our equipment. **Corrective** means fixing a reported problem. "
+             "**Routine** means regular service, like an oil change.")
 
-    status = st.selectbox("Status", ["All"] + STATUSES)
+    status = st.selectbox("Show", ["All"] + STATUSES)
 
     # LEFT JOIN so work orders with no technician still show up
     sql = """
         SELECT WO.WO_ID, WO.WO_DESCRIPTION, WO.WO_TYPE, WO.WO_STATUS,
                WO.WO_CREATED_DATE, WO.WO_DUE_DATE, E.EQUIP_ASSET_TAG,
-               GROUP_CONCAT(CONCAT(T.TECH_FNAME, ' ', T.TECH_LNAME)
-                            ORDER BY T.TECH_LNAME SEPARATOR ', ') AS TECHNICIANS
+               GROUP_CONCAT(T.TECH_FNAME ORDER BY T.TECH_FNAME SEPARATOR ', ') AS TECHNICIANS
         FROM WORK_ORDER WO
         JOIN EQUIPMENT E ON E.EQUIP_ID = WO.EQUIP_ID
         LEFT JOIN WORK_ASSIGNMENT WA ON WA.WO_ID = WO.WO_ID
@@ -37,5 +39,6 @@ def render():
     """
 
     orders = db.fetch_df(sql, params)
+    orders["TECHNICIANS"] = orders["TECHNICIANS"].fillna("Not assigned yet")
     st.caption(f"{len(orders)} work order(s)")
-    st.dataframe(orders, hide_index=True)
+    show_table(orders)

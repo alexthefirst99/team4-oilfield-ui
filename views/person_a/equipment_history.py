@@ -6,10 +6,12 @@ Pick one equipment item and show its inspections, problem reports, and repairs.
 import streamlit as st
 
 import db
+from views.person_a.display import show_table
 
 
 def render():
-    st.header("Equipment history")
+    st.header("Equipment History")
+    st.write("Pick a piece of equipment to see everything that has happened to it.")
 
     equipment = db.fetch_df(
         "SELECT EQUIP_ID, CONCAT(EQUIP_ASSET_TAG, ' - ', EQUIP_NAME) AS LABEL "
@@ -41,10 +43,11 @@ def render():
     col2.metric("Problem reports", len(problems))
     col3.metric("Completed repairs", len(repairs))
 
-    for title, table in [("Inspections", inspections), ("Problem reports", problems),
-                         ("Completed repairs", repairs)]:
+    for title, table, empty in [("Inspections", inspections, "No inspections yet."),
+                                ("Problem reports", problems, "No problems reported."),
+                                ("Completed repairs", repairs, "No repairs yet.")]:
         st.subheader(title)
         if table.empty:
-            st.write("None")
+            st.write(empty)
         else:
-            st.dataframe(table, hide_index=True)
+            show_table(table)

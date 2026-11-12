@@ -6,12 +6,14 @@ Lists every equipment item with its site and type. Filter by site and status.
 import streamlit as st
 
 import db
+from views.person_a.display import show_table
 
 STATUSES = ["Operational", "Out of Service", "Retired"]
 
 
 def render():
     st.header("Equipment")
+    st.write("All pumps, compressors, generators, and valves, and where they are.")
 
     sites = db.fetch_df("SELECT SITE_NAME FROM SITE ORDER BY SITE_NAME")["SITE_NAME"].tolist()
     col1, col2 = st.columns(2)
@@ -36,5 +38,7 @@ def render():
     sql += " ORDER BY S.SITE_NAME, E.EQUIP_ASSET_TAG"
 
     equipment = db.fetch_df(sql, params)
+    # Dates as text so one missing date can show as "Unknown"
+    equipment["EQUIP_INSTALL_DATE"] = equipment["EQUIP_INSTALL_DATE"].map(lambda d: d.isoformat() if d else "Unknown")
     st.caption(f"{len(equipment)} equipment item(s)")
-    st.dataframe(equipment, hide_index=True)
+    show_table(equipment)
